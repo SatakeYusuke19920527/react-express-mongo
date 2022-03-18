@@ -12,12 +12,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', usersRouter);
+
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 /* GET home page. */
 app.get('*', function(req, res, next) {
-  res.sendfile('../client/build/index.html');  
+  res.sendFile('../client/build/index.html');  
 });
 
 // catch 404 and forward to error handler
